@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Yes No App',
-      theme:AppTheme(selectColor: 10).theme(),
+      theme:AppTheme(selectColor: 7).theme(),
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Material App Bar'),
