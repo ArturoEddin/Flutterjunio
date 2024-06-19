@@ -15,7 +15,7 @@ const List<Color> _themeColor = [
 class AppTheme {
   final int selectColor;
 
-  AppTheme({ this.selectColor=0}):assert(selectColor >=0 && selectColor <= _themeColor.length -1,"must be between 0 and ${_themeColor.length}");
+  AppTheme({ this.selectColor=0}):assert(selectColor >=0 && selectColor <= _themeColor.length -1,"Colors must be between 0 and ${_themeColor.length}");
 
   
 
