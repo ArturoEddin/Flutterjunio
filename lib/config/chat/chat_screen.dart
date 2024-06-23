@@ -16,6 +16,29 @@ class ChatScreen extends StatelessWidget {
         title:const Text("Mi Amor  "),
         centerTitle:false,
         ),
+        body: _ChatView() ,
+    );
+  }
+}
+
+class _ChatView extends StatelessWidget {
+ 
+
+  @override
+  Widget build(BuildContext context) {
+    return  SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          children: [
+            Expanded(
+              child:Container(
+              color: Colors.red,
+            )),
+            const Text("Mundo")
+          ],
+        ),
+      ),
     );
   }
 }
