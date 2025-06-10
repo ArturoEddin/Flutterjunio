@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:yes_no_app2/config/presentacion/widgets/chat/her_message_bubble%20.dart';
-import 'package:yes_no_app2/config/presentacion/widgets/chat/my_message_bubble.dart';
-import 'package:yes_no_app2/config/presentacion/widgets/shared/message_field_box.dart';
+import 'package:provider/provider.dart';
+import 'package:yes_no_app2/domain/entities/message.dart';
+import 'package:yes_no_app2/presentacion/providers/chat_provaider.dart';
+import 'package:yes_no_app2/presentacion/widgets/chat/her_message_bubble%20.dart';
+import 'package:yes_no_app2/presentacion/widgets/chat/my_message_bubble.dart';
+import 'package:yes_no_app2/presentacion/widgets/shared/message_field_box.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -28,17 +31,23 @@ class ChatScreen extends StatelessWidget {
 class _ChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final chatprovider = context.watch<ChatProvider>();
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
-            Expanded(child: ListView.builder(
-              itemCount: 100,
+            Expanded(
+                child: ListView.builder(
+              itemCount: chatprovider.messageList.length,
               itemBuilder: (context, index) {
-                return (index % 2 == 0) 
-                ?const HerMessageBubble()
-                :const MyMessageBubble();
+                final message = chatprovider.messageList[index];
+                return (message.fromWho == FromWho.hers)
+                ? const HerMessageBubble()
+                :  MyMessageBubble(message : message) ;// Si el mensaje es de ella
+                
+                
               },
             )),
 
